@@ -235,6 +235,9 @@ git checkout ${FRB_GIT_BRANCH}
 git pull
 
 cd $WORKSPACE
+to_output "Running luacheck linter"
+luacheck package scripts targets || exit 1
+
 to_output "Update OpenWrt"
 make update
 check_last_exitcode
